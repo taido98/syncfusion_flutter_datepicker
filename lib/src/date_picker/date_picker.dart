@@ -2625,6 +2625,7 @@ class SfDateRangePicker extends StatelessWidget {
       initialSelectedRanges: initialSelectedRanges,
       toggleDaySelection: toggleDaySelection,
       enablePastDates: enablePastDates,
+      callbackTapPastDay: callbackTapPastDay,
       showNavigationArrow: showNavigationArrow,
       selectionShape: selectionShape,
       navigationDirection: navigationDirection,
@@ -4355,6 +4356,8 @@ class SfHijriDateRangePicker extends StatelessWidget {
   ///```
   final bool enablePastDates;
 
+  final VoidCallback? enablePastDates;
+
   /// The collection of dates to initially select on the
   /// [SfHijriDateRangePicker].
   ///
@@ -5265,6 +5268,7 @@ class SfHijriDateRangePicker extends StatelessWidget {
       initialSelectedRanges: initialSelectedRanges,
       toggleDaySelection: toggleDaySelection,
       enablePastDates: enablePastDates,
+      callbackTapPastDay: enablePastDates,
       showNavigationArrow: showNavigationArrow,
       selectionShape: selectionShape,
       navigationDirection: navigationDirection,
@@ -11316,6 +11320,7 @@ class _PickerViewState extends State<_PickerView>
       widget.picker.minDate,
       widget.picker.maxDate,
       widget.picker.enablePastDates,
+      widget.picker.callbackTapPastDay,
       DateRangePickerHelper.canShowLeadingAndTrailingDates(
           widget.picker.monthViewSettings, widget.picker.isHijri),
       widget.picker.monthViewSettings.blackoutDates,
@@ -11614,6 +11619,7 @@ class _PickerViewState extends State<_PickerView>
         widget.picker.minDate,
         widget.picker.maxDate,
         widget.picker.enablePastDates,
+        widget.picker.callbackTapPastDay,
         widget.picker.todayHighlightColor,
         widget.picker.selectionShape,
         widget.picker.monthFormat,
