@@ -243,6 +243,7 @@ class SfDateRangePicker extends StatelessWidget {
       this.monthFormat,
       this.cellBuilder,
       this.showTodayButton = false,
+      this.callbackTapPastDay,
       this.selectableDayPredicate,
       this.extendableRangeSelectionDirection =
           ExtendableRangeSelectionDirection.both})
@@ -312,6 +313,8 @@ class SfDateRangePicker extends StatelessWidget {
   ///
   /// ```
   final DateRangePickerView view;
+
+  final VoidCallback? callbackTapPastDay;
 
   /// Defines the selection mode for [SfDateRangePicker].
   ///
@@ -2624,6 +2627,7 @@ class SfDateRangePicker extends StatelessWidget {
       initialSelectedRanges: initialSelectedRanges,
       toggleDaySelection: toggleDaySelection,
       enablePastDates: enablePastDates,
+      callbackTapPastDay: callbackTapPastDay,
       showNavigationArrow: showNavigationArrow,
       selectionShape: selectionShape,
       navigationDirection: navigationDirection,
@@ -2863,6 +2867,7 @@ class SfHijriDateRangePicker extends StatelessWidget {
     List<HijriDateRange>? initialSelectedRanges,
     this.toggleDaySelection = false,
     this.enablePastDates = true,
+    this.callbackTapPastDay,
     this.showNavigationArrow = false,
     this.confirmText = 'OK',
     this.cancelText = 'CANCEL',
@@ -2961,6 +2966,8 @@ class SfHijriDateRangePicker extends StatelessWidget {
   ///
   /// ```
   final HijriDatePickerView view;
+
+  final VoidCallback? callbackTapPastDay;
 
   /// Defines the selection mode for [SfHijriDateRangePicker].
   ///
@@ -5264,6 +5271,7 @@ class SfHijriDateRangePicker extends StatelessWidget {
       initialSelectedRanges: initialSelectedRanges,
       toggleDaySelection: toggleDaySelection,
       enablePastDates: enablePastDates,
+      callbackTapPastDay: callbackTapPastDay,
       showNavigationArrow: showNavigationArrow,
       selectionShape: selectionShape,
       navigationDirection: navigationDirection,
@@ -5434,6 +5442,7 @@ class _SfDateRangePicker extends StatefulWidget {
       this.monthFormat,
       this.cellBuilder,
       this.showTodayButton = false,
+      this.callbackTapPastDay,
       this.selectableDayPredicate,
       this.extendableRangeSelectionDirection =
           ExtendableRangeSelectionDirection.both})
@@ -5452,6 +5461,8 @@ class _SfDateRangePicker extends StatefulWidget {
   final String confirmText;
 
   final String cancelText;
+
+  final VoidCallback? callbackTapPastDay;
 
   final bool showActionButtons;
 
@@ -12539,6 +12550,7 @@ class _PickerViewState extends State<_PickerView>
           widget.picker.enablePastDates,
           selectedDate,
           widget.picker.isHijri)) {
+        widget.picker.callbackTapPastDay?.call();
         return;
       }
 
